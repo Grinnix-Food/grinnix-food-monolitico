@@ -38,5 +38,5 @@ public class PaymentOrderEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "orders_id", nullable = false)
-  private BigDecimal order;
+  private OrderEntity order;
 }
