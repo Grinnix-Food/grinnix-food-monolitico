@@ -1,5 +1,6 @@
 package com.grinnix.food.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,14 +30,15 @@ public class OrderItemEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "orders_id", nullable = false)
+  @JsonIgnore
   private OrderEntity order;
+
+  @Column(nullable = false)
+  private Integer quantity;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "product_id", nullable = false)
   private ProductsEntity product;
-
-  @Column(nullable = false)
-  private Integer quantity;
 
   public BigDecimal calculateSubtotal() {
     return product.getPrice().multiply(BigDecimal.valueOf(quantity));

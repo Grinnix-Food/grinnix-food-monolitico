@@ -1,7 +1,11 @@
 package com.grinnix.food.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.grinnix.food.enums.PaymentStatusEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,16 +31,14 @@ public class PaymentOrderEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(nullable = false, length = 80)
-  private String ownerName;
-
-  @Column()
-  private String status;
+  @Enumerated(EnumType.STRING)
+  private PaymentStatusEnum status;
 
   @Column()
   private BigDecimal total;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "orders_id", nullable = false)
+  @JsonIgnore
   private OrderEntity order;
 }
