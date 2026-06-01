@@ -24,5 +24,13 @@ services:
     depends_on:
       - db
 
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog-grinnix-food
+    ports:
+      - "1025:1025"
+      - "8025:8025" # Web UI
+    restart: unless-stopped
+
 volumes:
   pgdata:
