@@ -42,7 +42,7 @@ O sistema monolitico do grinnix-food por padrão já está com um atraso de `5s`
 
 Analisando o comportamente do sistema em paralelo com essa lentidão não houve nenhuma falha ou complicação aparanete durante todo o uso do sistema, mesmo com o delay de `5s` no `service de pagamento`, apenas tivmos um acumulo na demora para finalizar os pagamentos na rota de payment.
 
-> Ajustar ( caso queira realizar os testes por si mesmo, execute `docker compose up -d --build` para executar o sistema e `docker logs -f k6-load-test` para acompanhar os testes realizados no endpoint nos primeiros 5 minutos no ar )
+Caso queira realizar os testes por si mesmo, execute `docker compose up -d --build` para executar o sistema e `docker logs -f k6-load-test` para acompanhar os testes realizados no endpoint nos primeiros 5 minutos no ar 
 
 
 # Como rodar
