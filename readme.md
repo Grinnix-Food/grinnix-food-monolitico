@@ -36,18 +36,16 @@ Considerando a importância desse fluxo para o funcionamento do sistema, foram r
 
 # teste de lentidão do modulo de pagamento
 
-O objetivo desse teste é simular o atraso do `service de pagamento` enquanto processa o pagamento de algum pedido em especifico, afim de verificar se ocorre algum problema no restante da aplicação por causa desse atraso que pode ocorrer normalmente em qualquer sistema real, sejá por problemas de processamento ou por causa de latência.
+O objetivo desse teste é simular o atraso do service de pagamento enquanto processa o pagamento de algum pedido em especifico, afim de verificar se ocorre algum problema no restante da aplicação por causa desse atraso que pode ocorrer normalmente em qualquer sistema real, sejá por problemas de processamento ou por causa de latência.
 
-O sistema monolitico do grinnix-food por padrão já está com um atraso de `5s` ao realizar o processamento do pagamento de um pedido, para testar esse comportamento foi realizado a criação de um script que fica realizando requisições que simulam vário usuário interagindo com o nosso sistema e afim de aumentar a base de teste, um usuário real continuo realizando requisições enquanto o script ainda estava operante.
+O sistema monolitico do grinnix-food por padrão já está com um atraso de 5s ao realizar o processamento do pagamento de um pedido, para testar esse comportamento foi realizado a criação de um script que fica realizando requisições que simulam vário usuário interagindo com o nosso sistema e afim de aumentar a base de teste, um usuário real continuo realizando requisições enquanto o script ainda estava operante.
 
-Analisando o comportamente do sistema em paralelo com essa lentidão não houve nenhuma falha ou complicação aparanete durante todo o uso do sistema, mesmo com o delay de `5s` no `service de pagamento`, apenas tivmos um acumulo na demora para finalizar os pagamentos na rota de payment.
-
-Caso queira realizar os testes por si mesmo, execute `docker compose up -d --build` para executar o sistema e `docker logs -f k6-load-test` para acompanhar os testes realizados no endpoint nos primeiros 5 minutos no ar 
+Analisando o comportamente do sistema em paralelo com essa lentidão não houve nenhuma falha ou complicação aparanete durante todo o uso do sistema, mesmo com o delay de 5s no service de pagamento, apenas tivmos um acumulo na demora para finalizar os pagamentos na rota de payment.
 
 
 # Como rodar
 
-O projeto foi planejado para usar a sua infra-estrutura com containers docker, onde o docker compose irá orquestrar para você tanto o banco de dados como o serviço de email ( mailhog ) que captura cada envio de email. O docker compose desse repositório também é responsável por realizar o build da aplicação e executa-la em um container, então para subir toda a infraestrutura e buildar e executar a aplicação do grinnix-food basta executar o seguinte comando:
+O projeto foi planejado para usar a sua infra-estrutura com containers docker, onde o docker compose irá orquestrar para você tanto o banco de dados como o serviço de email ( mailhog rodando em localhost:8025 ) que captura cada envio de email. O docker compose desse repositório também é responsável por realizar o build da aplicação e executa-la em um container, então para subir toda a infraestrutura e buildar e executar a aplicação do grinnix-food basta executar o seguinte comando:
 
 ```
   docker compose up --build -d -> versão sem a cli do docker compose instalada
