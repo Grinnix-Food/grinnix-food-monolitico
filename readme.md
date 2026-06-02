@@ -50,6 +50,6 @@ Caso queira realizar os testes por si mesmo, execute `docker compose up -d --bui
 O projeto foi planejado para usar a sua infra-estrutura com containers docker, onde o docker compose irá orquestrar para você tanto o banco de dados como o serviço de email ( mailhog ) que captura cada envio de email. O docker compose desse repositório também é responsável por realizar o build da aplicação e executa-la em um container, então para subir toda a infraestrutura e buildar e executar a aplicação do grinnix-food basta executar o seguinte comando:
 
 ```
-  docker compose up -d -> versão sem a cli do docker compose instalada
-  docker-compose up -d -> versão com a cli do docker compose
+  docker compose up --build -d -> versão sem a cli do docker compose instalada
+  docker-compose up --build -d -> versão com a cli do docker compose
 ```
