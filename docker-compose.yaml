@@ -26,6 +26,7 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: secret
       PORT: 9087
+      MAIL_HOG_HOST: mailhog
     depends_on:
       db:
         condition: service_healthy
