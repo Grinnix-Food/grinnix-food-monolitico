@@ -45,6 +45,7 @@ public class OrderService {
     order.setAddress(request.address());
     order.setFinished(false);
     order.setTotal(BigDecimal.ZERO);
+    order.setObservation(request.observation());
 
     return orderRepository.save(order);
   }
@@ -105,7 +106,7 @@ public class OrderService {
     order.updateTotal();
 
     PaymentOrderEntity paymentOrder = new PaymentOrderEntity();
-    
+
     paymentOrder.setOrder(order);
 
     paymentOrder.setTotal(order.getTotal());

@@ -37,6 +37,9 @@ public class OrderEntity {
   @Column(nullable = false, length = 255)
   private String address;
 
+  @Column(nullable = false, length = 255)
+  private String observation;
+
   @OneToMany(
     mappedBy = "order",
     cascade = CascadeType.ALL,
